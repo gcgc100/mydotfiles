@@ -1,0 +1,9 @@
+snippet RMysql
+library(RMySQL)
+con <- dbConnect(MySQL(), user="${1:root}", password="${2:password}", dbname="${3:dbname}", host="localhost")
+rs <- dbSendQuery(con, "${4:sql}")
+data <- fetch(rs, n=-1)
+dbClearResult(rs)
+dbDisconnect(con)
+$0
+endsnippet

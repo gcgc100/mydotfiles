@@ -1,0 +1,26 @@
+snippet it "Italic text"
+\textit{${1:text}}
+endsnippet
+
+snippet bf "Bold text"
+\textbf{${1:text}}
+endsnippet
+
+snippet figure "Figure ref"
+Figure~\ref{${1:fig:}${2:label}}
+endsnippet
+
+snippet section "Section ref"
+Section~\ref{${1:ref:}${2:label}}
+endsnippet
+
+snippet listing "Listing ref"
+Listing~\ref{${1:lst:}${2:label}}
+endsnippet
+
+snippet frame "Create a slides frame"
+\begin{frame}
+    \frametitle{${1:frametitle}}
+    $0
+\end{frame}
+endsnippet

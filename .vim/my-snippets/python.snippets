@@ -1,0 +1,46 @@
+snippet py "Shebang header for python scripts" b
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+$0
+endsnippet
+
+snippet mymain "main function with argparse to parse argument"
+def main():
+    parser = argparse.ArgumentParser(${1:ProgDesc})
+    parser.add_argument(${2:para}, help=${3:parahelp})
+
+    try:
+        args = parser.parse_args()
+    except Exception as e:
+        print e
+        sys.exit()
+    $0
+endsnippet
+
+snippet mysqlConnection "A generator to connect mysql. Based on my db module."
+def _createEngine(func):
+    @functools.wraps(func)
+    def _wrapper(*args, **kw):
+        if db.engine is None:
+            db.create_engine(${1:secretConfig.user}, ${2:secretConfig.password}, ${3:secretConfig.dbname})
+        return func(*args, **kw)
+    return _wrapper
+$0
+endsnippet
+
+snippet ld "logger.debug"
+logger.debug(${1:message})$0
+endsnippet
+
+snippet le "logger.error"
+logger.error(${1:message})$0
+endsnippet
+
+snippet li "logger.info"
+logger.info(${1:message})$0
+endsnippet
+
+snippet test "test case method"
+def test_${1:method}(self):
+    $0
+endsnippet

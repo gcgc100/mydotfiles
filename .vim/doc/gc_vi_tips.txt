@@ -1,0 +1,34 @@
+*gc_vi_tips.txt*   My tips on how to use vim. ChongGuan
+
+learn vim               vimtutor
+vim                     :help
+CTRL+]                  jump to next in help
+CTRL+t                  jump back
+highlight
+searching word          :set hls
+clear search highlight  :noh
+show                    hidder
+characters              :set list
+binary view             :%!xxd
+return                  :%!xxd -r
+(xxd is a shell cmd)
+goto file               gf
+file management  :edit      .
+search help             :helpgrep
+get options value       &           e.g.    &tm
+eval expr in substitute \=          e.g.  number+1  :s/\v(\d+)/\submatch(0)+1/g
+
+vim multiple files  vi -o file1 file2
+read stdin into     ex:  ls | vi -
+qq recording   q stop        record  @q    repeat    the                          recorded
+
+help expr4                  Avaliable comparison operators
+help internal-variables     list of scopes
+help expr-quote             Escape sequences you can use in strings
+help autocmd-events         A list of all the events you can bind autocommands
+help partern-overview       regex help
+
+Add help doc in vim:
+Add .txt help file in .vim/doc/.
+.txt must in vim help format.
+Run :helptags
