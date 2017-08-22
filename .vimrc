@@ -28,11 +28,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/cream-capitalization'
-"Unused {{{
 "Python-mode {{{
-" let g:pymode_lint_options_pylint =
-"	\ {'indent-string:': "    "}
+ let g:pymode_breakpoint_cmd = "__import__('pdb').set_trace()  # XXX BREAKPOINT"
 "}}}
+"Unused {{{
 " Plugin 'vim-scripts/dbext.vim'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'flazz/vim-colorschemes'

@@ -1,1 +1,1 @@
-/Users/guanchong/Documents/my-conf/.tmux
+/Users/gc/Documents/myLibrary/mydotfiles/.tmux
