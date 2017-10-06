@@ -30,8 +30,8 @@ install_with_brew(){
 }
 
 install_pip(){
-    sudo python get-pip.py
-    sudo easy_install nose
+    python get-pip.py --prefix=/usr/local/
+    easy_install nose
 }
 
 install_oh_my_zsh(){

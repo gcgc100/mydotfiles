@@ -1,1 +1,1 @@
-/Users/guanchong/Documents/my-conf/.tmux
+/Users/guanchong/Documents/workspace/my-conf/.tmux

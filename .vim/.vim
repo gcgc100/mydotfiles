@@ -1,1 +1,1 @@
-/Users/guanchong/Documents/my-conf/.vim
+/Users/guanchong/Documents/workspace/my-conf/.vim

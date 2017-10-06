@@ -12,7 +12,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'pangloss/vim-javascript'
-Plugin 'danielmiessler/VimBlog'
+"Plugin 'danielmiessler/VimBlog'
+Plugin 'vim-scripts/VimRepress'
 " Plugin 'MrPeterLee/VimWordpress'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
