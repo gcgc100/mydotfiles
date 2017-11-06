@@ -29,6 +29,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/cream-capitalization'
+Plugin 'vim-syntastic/syntastic'
 "Python-mode {{{
  let g:pymode_breakpoint_cmd = "__import__('pdb').set_trace()  # XXX BREAKPOINT"
 "}}}
