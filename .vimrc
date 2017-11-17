@@ -30,8 +30,10 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/cream-capitalization'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'tpope/vim-surround'
 "Python-mode {{{
  let g:pymode_breakpoint_cmd = "__import__('pdb').set_trace()  # XXX BREAKPOINT"
+ let g:pymode_lint_on_write = 0
 "}}}
 "Unused {{{
 " Plugin 'vim-scripts/dbext.vim'
