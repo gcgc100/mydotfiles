@@ -176,7 +176,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 let g:NERDTreeWinPos = "right"
 "}}}
 "Vimtex {{{
+let g:vimtex_enabled = 0
 let b:vimtex_main = 'main.tex'
+let g:vimtex_disable_recursive_main_file_detection = 1
+let g:vimtex_toc_refresh_always = 0
+let g:vimtex_complete_enabled = 0
 "}}}
 " Snippets Configuration -------{{{
 " Track the engine.
