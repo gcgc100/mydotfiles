@@ -40,7 +40,25 @@ snippet li "logger.info"
 logger.info(${1:message})$0
 endsnippet
 
+snippet lw "logger.warning"
+logger.warning(${1:message})$0
+endsnippet
+
 snippet test "test case method"
 def test_${1:method}(self):
     $0
+endsnippet
+
+snippet property "Add setter and getter for property"
+@property
+def ${1:property}(self):
+    """$1 property getter
+    """
+    return self._$1
+
+@$1.setter
+def $1(self, $1):
+    """$1 property setter
+    """
+    self._$1 = $1
 endsnippet
