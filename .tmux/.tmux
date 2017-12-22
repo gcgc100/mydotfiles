@@ -1,1 +1,0 @@
-/Users/guanchong/Documents/workspace/my-conf/.tmux
