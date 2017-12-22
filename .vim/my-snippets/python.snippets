@@ -17,6 +17,11 @@ def main():
     $0
 endsnippet
 
+snippet addargs "argsparse add argument"
+parser.add_argument("--$1",
+                    help="$2")
+endsnippet
+
 snippet mysqlConnection "A generator to connect mysql. Based on my db module."
 def _createEngine(func):
     @functools.wraps(func)

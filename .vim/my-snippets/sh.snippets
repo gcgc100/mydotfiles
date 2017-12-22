@@ -1,0 +1,8 @@
+snippet cleanup "Clean up function"
+clean_up() {
+    rm $1
+    exit
+}
+
+trap clean_up SIGHUP SIGINT SIGTERM
+endsnippet

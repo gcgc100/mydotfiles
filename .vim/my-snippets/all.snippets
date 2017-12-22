@@ -6,3 +6,15 @@ else
     exit 1
 fi
 endsnippet
+
+snippet errorFunc "Error exit function"
+error_exit() {
+    echo \$1 1>&2
+    exit 1
+}
+endsnippet
+
+snippet errExit "Error exit"
+error_exit "$1"
+$0
+endsnippet
