@@ -1,11 +1,15 @@
 # My Configuration Files and Software list
 
-* vimconf: vim configuration files and plugins
-* .screenrc: screen conf
+* .vim .vimrc: vim configuration files and plugins
 * .bashrc: bash conf
+* .zshrc: zsh conf
+* .gitconfig: git conf
+* .tmux.conf: tmux conf
+* .screenrc: screen conf
 
 ## Software list:
 * [xterm2](https://www.iterm2.com/): New terminal on OS X.
+* [tmux](https://github.com/tmux/tmux): tmux:terminal multiplexer.
 * [autojump](https://github.com/wting/autojump): Quick navigatio on terminal. Replace 'cd'.
 * [brew](https://brew.sh/): Install software on macOS.
 * [screen](https://www.gnu.org/software/screen/): Split screen in terminal. conf file:.screenrc [Another option: tmux](http://tmux.github.io/)).
