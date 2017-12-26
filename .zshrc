@@ -88,6 +88,7 @@ bindkey "^p" up-line-or-search
 bindkey "^n" down-line-or-search
 
 alias vit="vi -R -"
+alias vi="vim"
 alias rm="rm -i"
 alias cp='cp -i'
 alias mv='mv -i'
