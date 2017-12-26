@@ -13,7 +13,6 @@ binary view             :%!xxd
 return                  :%!xxd -r
 (xxd is a shell cmd)
 goto file               gf
-file management  :edit      .
 search help             :helpgrep
 get options value       &           e.g.    &tm
 eval expr in substitute \=          e.g.  number+1  :s/\v(\d+)/\submatch(0)+1/g
@@ -32,3 +31,5 @@ Add help doc in vim:
 Add .txt help file in .vim/doc/.
 .txt must in vim help format.
 Run :helptags
+
+list the loaded vimrc:  :version
