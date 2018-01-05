@@ -1,3 +1,14 @@
+# Usage
+Clone prject:
+git clone https://github.com/gcgc100/mydotfiles.git --recursive
+or
+git clone https://github.com/gcgc100/mydotfiles.git
+git submodule init
+git submodule update
+
+Install:
+bash install.sh
+
 # My Configuration Files and Software list
 
 * .vim .vimrc: vim configuration files and plugins
