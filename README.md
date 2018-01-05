@@ -30,3 +30,5 @@ bash install.sh
 ## tmux plugin install
 apt-get install xsel on Linux or brew install reattach-to-user-clipboard on OS-X
 Inside tmux press **C-prefix I** to install plugins
+
+Dependencies: xclip, xsel
