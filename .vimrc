@@ -14,7 +14,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'pangloss/vim-javascript'
 "Plugin 'danielmiessler/VimBlog'
 Plugin 'vim-scripts/VimRepress'
-" Plugin 'MrPeterLee/VimWordpress'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -24,7 +23,7 @@ Plugin 'ervandew/supertab'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mileszs/ack.vim'
-Plugin 'python-mode/python-mode'
+"Plugin 'python-mode/python-mode'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
@@ -97,7 +96,7 @@ set foldlevelstart=10
 set wrap linebreak nolist
 set colorcolumn=80
 " set foldmethod=indent
-colorscheme default
+colorscheme slate
 filetype plugin on
 "}}}
 "Mapping ----{{{

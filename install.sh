@@ -39,12 +39,7 @@ program_exists() {
 }
 
 program_must_exist() {
-    program_exists $1
-
-    # throw error on non-zero return value
-    if [ "$?" -ne 0 ]; then
-        error "You must have '$1' installed to continue."
-    fi
+    program_exists $1 || error  "You must have '$1' installed to continue."
 }
 
 HOME=${HOME}
@@ -55,16 +50,21 @@ TMUXPLUGINMANAGER=${HOME}"/.tmux/plugins/tpm"
 
 create_symlinks() {
     dotfiles=(".bashrc" ".gitconfig" ".screenrc" ".tmux.conf" ".zshrc" 
-    ".vimrc" ".vim" ".tmux")
-    for dotfile in "${dotfiles[@]}"
-    do
-        ln -sf ${PWD}/${dotfile} ${HOME}/${dotfile}
+    ".vimrc")
+    for dotfile in "${dotfiles[@]}"; do
+        ln -sf ${PWD}/${dotfile} ${HOME}/${dotfile} || error "Create symlink ${dotfile} failed."
         echo "Create symlink ${HOME}/${dotfile}"
     done
+    dotDirs=(".vim" ".tmux")
+    for dotdir in "${dotDirs[@]}"; do
+        ln -sfn ${PWD}/${dotdir} ${HOME}/${dotdir} || error "Create symlink to dir (${dotdir}) failed."
+    done
+    ret=0
+    success "Create symlink success"
 }
 
 install_brew(){
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" || error "Install brew failed"
 }
 
 install_with_brew(){
@@ -76,29 +76,30 @@ install_with_brew(){
         brew install ctags
         brew install macvim --with-override-system-vim
         brew install autojump
+        success "Brew packages installed"
     else
-        echo "WARNING"
+        warn "brew cmd not found"
     fi
 }
 
 install_pip(){
-    python get-pip.py --prefix=/usr/local/
-    easy_install nose
+    python get-pip.py --prefix=/usr/local/ || error "Install pip failed"
+    easy_install nose || error "Install nosetests failed"
 }
 
 install_oh_my_zsh(){
 	if [ -d "${OH_MY_ZSH}"  ]; then
 		cd "${OH_MY_ZSH}"
-		echo "Change directory to `pwd`"
-		echo "${OH_MY_ZSH} exists. Git pull to update..."
+		msg "Change directory to `pwd`"
+		msg "${OH_MY_ZSH} exists. Git pull to update..."
 		git pull
 		cd - > /dev/null 2>&1
-		echo "Change directory back to `pwd`"
+		msg "Change directory back to `pwd`"
 	else
-		echo "${OH_MY_ZSH} not exists. Install..."
+		msg "${OH_MY_ZSH} not exists. Install..."
 		#git clone git@github.com:robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
 		#wget --no-check-certificate http://install.ohmyz.sh -O - | sh
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" || "Install oh-my-zsh failed"
 		#git clone https://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
 	fi
 }
@@ -109,6 +110,7 @@ install_vundle(){
 		cd "${VUNDLE}"
 		echo "Change directory to `pwd`"
 		echo "${VUNDLE} exists. Git pull to update..."
+        git checkout master
 		git pull
 		cd - > /dev/null 2>&1
 		echo "Change directory back to `pwd`"
@@ -139,8 +141,10 @@ main() {
     program_must_exist "vim"
     program_must_exist "git"
     create_symlinks
-    install_brew
-    install_with_brew
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        install_brew
+        install_with_brew
+    fi
     install_pip
     install_oh_my_zsh
     install_vundle
