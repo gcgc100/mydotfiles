@@ -1,5 +1,52 @@
 #!/bin/sh
 
+############################  BASIC SETUP TOOLS
+msg() {
+    printf '%b\n' "$1" >&2
+}
+
+success() {
+    if [ "$ret" -eq '0' ]; then
+        msg "\33[32m[✔]\33[0m ${1}${2}"
+    fi
+}
+
+error() {
+    msg "\33[31m[✘]\33[0m ${1}${2}"
+    exit 1
+}
+
+warn() {
+    msg "WARNING: ${1}"
+}
+
+debug() {
+    if [ "$debug_mode" -eq '1' ] && [ "$ret" -gt '1' ]; then
+        msg "An error occurred in function \"${FUNCNAME[$i+1]}\" on line ${BASH_LINENO[$i+1]}, we're sorry for that."
+    fi
+}
+
+program_exists() {
+    local ret='0'
+    command -v $1 >/dev/null 2>&1 || { local ret='1'; }
+
+    # fail on non-zero return value
+    if [ "$ret" -ne 0 ]; then
+        return 1
+    fi
+
+    return 0
+}
+
+program_must_exist() {
+    program_exists $1
+
+    # throw error on non-zero return value
+    if [ "$?" -ne 0 ]; then
+        error "You must have '$1' installed to continue."
+    fi
+}
+
 HOME=${HOME}
 PWD=`pwd`
 OH_MY_ZSH=${HOME}"/.oh-my-zsh"
@@ -21,12 +68,17 @@ install_brew(){
 }
 
 install_with_brew(){
-    brew install zsh
-    brew install tree
-    brew install tmux
-    brew install ctags
-    brew install macvim --with-override-system-vim
-    brew install autojump
+    command -v brew
+    if [ "$?" -eq 0 ]; then
+        brew install zsh
+        brew install tree
+        brew install tmux
+        brew install ctags
+        brew install macvim --with-override-system-vim
+        brew install autojump
+    else
+        echo "WARNING"
+    fi
 }
 
 install_pip(){
@@ -83,6 +135,9 @@ install_tpm(){
 }
 
 main() {
+    program_must_exist "python"
+    program_must_exist "vim"
+    program_must_exist "git"
     create_symlinks
     install_brew
     install_with_brew
