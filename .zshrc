@@ -89,7 +89,8 @@ bindkey "^n" down-line-or-search
 source ~/.gc
 PWD=$(pwd)
 cd $DOTFILEDIR
-git fetch
+echo "Check dotfiles"
+git fetch &>/dev/null
 git status | grep "up-to-date" &>/dev/null
 if [ $? -ne 0 ]; then
     echo "Updating dot files ..."

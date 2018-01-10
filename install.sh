@@ -64,7 +64,8 @@ create_symlinks() {
 }
 
 install_brew(){
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" || error "Install brew failed"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" &>/dev/null || error "Install brew failed"
+    success "Install brew successfully"
 }
 
 install_with_brew(){
@@ -83,8 +84,10 @@ install_with_brew(){
 }
 
 install_pip(){
-    python get-pip.py --prefix=/usr/local/ || error "Install pip failed"
-    easy_install nose || error "Install nosetests failed"
+    python get-pip.py --prefix=/usr/local/ &>/dev/null || error "Install pip failed"
+    success "Install pip successfully"
+    easy_install nose &>/dev/null || error "Install nosetests failed"
+    success "Install nosetests successfully"
 }
 
 install_oh_my_zsh(){
@@ -92,14 +95,16 @@ install_oh_my_zsh(){
 		cd "${OH_MY_ZSH}"
 		msg "Change directory to `pwd`"
 		msg "${OH_MY_ZSH} exists. Git pull to update..."
-		git pull
+		git pull &>/dev/null || error "Update oh-my-zsh failed"
 		cd - > /dev/null 2>&1
 		msg "Change directory back to `pwd`"
+        success "Update oh-my-zsh successfully"
 	else
 		msg "${OH_MY_ZSH} not exists. Install..."
 		#git clone git@github.com:robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
 		#wget --no-check-certificate http://install.ohmyz.sh -O - | sh
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" || "Install oh-my-zsh failed"
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" &>/dev/null || "Install oh-my-zsh failed"
+        success "Install oh-my-zsh successfully"
 		#git clone https://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
 	fi
 }
@@ -110,14 +115,16 @@ install_vundle(){
 		cd "${VUNDLE}"
 		echo "Change directory to `pwd`"
 		echo "${VUNDLE} exists. Git pull to update..."
-        git checkout master
-		git pull
+        git checkout master &>/dev/null
+		git pull &>/dev/null
 		cd - > /dev/null 2>&1
 		echo "Change directory back to `pwd`"
+        success "Update vundle successfully"
 	else
 		echo "${VUNDLE} not exists. Git clone to create..."
-		git clone https://github.com/gmarik/Vundle.vim.git ${VUNDLE}
+		git clone https://github.com/gmarik/Vundle.vim.git ${VUNDLE} &>/dev/null
 		vim +PluginInstall +qall
+        success "Install vundle successfully"
 	fi
 }
 
@@ -125,14 +132,16 @@ install_vundle(){
 install_tpm(){
 	if [ -d "${TMUXPLUGINMANAGER}" ]; then
 		cd "${TMUXPLUGINMANAGER}"
-		echo "Change directory to `pwd`"
-		echo "${TMUXPLUGINMANAGER} exists. Git pull to update..."
-		git pull
+		msg "Change directory to `pwd`"
+		msg "${TMUXPLUGINMANAGER} exists. Git pull to update..."
+		git pull &>/dev/null
 		cd - > /dev/null 2>&1
-		echo "Change directory back to `pwd`"
+		msg "Change directory back to `pwd`"
+        success "Update tmux plugin tpm successfully"
 	else
-		echo "${TMUXPLUGINMANAGER} not exists. Git clone to create..."
-		git clone https://github.com/tmux-plugins/tpm ${TMUXPLUGINMANAGER}
+		msg "${TMUXPLUGINMANAGER} not exists. Git clone to create..."
+		git clone https://github.com/tmux-plugins/tpm ${TMUXPLUGINMANAGER} &>/dev/null
+        success "Install tmux plugin tpm successfully"
 	fi
 }
 
