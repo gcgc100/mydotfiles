@@ -83,9 +83,20 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
 bindkey "^p" up-line-or-search
 bindkey "^n" down-line-or-search
+
+source ~/.gc
+PWD=$(pwd)
+cd $DOTFILEDIR
+git status | grep "up-to-date" &>/dev/null
+if [ $? -ne 0 ]; then
+    echo "Updating dot files ..."
+    git pull
+else
+    echo "Dotfiles are up-to-date"
+fi
+cd $PWD
 
 alias vit="vi -R -"
 alias vi="vim"
