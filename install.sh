@@ -61,6 +61,7 @@ create_symlinks() {
     done
     ret=0
     success "Create symlink success"
+    echo 'export DOTFILEDIR='${PWD} > ~/.gc
 }
 
 install_brew(){

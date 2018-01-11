@@ -96,7 +96,7 @@ set foldlevelstart=10
 set wrap linebreak nolist
 set colorcolumn=80
 " set foldmethod=indent
-colorscheme slate
+colorscheme peachpuff
 filetype plugin on
 "}}}
 "Mapping ----{{{
