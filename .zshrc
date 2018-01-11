@@ -87,7 +87,7 @@ bindkey "^p" up-line-or-search
 bindkey "^n" down-line-or-search
 
 source ~/.gc
-PWD=$(pwd)
+CWD=`pwd`
 cd $DOTFILEDIR
 echo "Check dotfiles"
 git fetch &>/dev/null
@@ -98,7 +98,7 @@ if [ $? -ne 0 ]; then
 else
     echo "Dotfiles are up-to-date"
 fi
-cd $PWD
+cd $CWD
 
 alias vit="vi -R -"
 alias vi="vim"
