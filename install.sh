@@ -50,7 +50,7 @@ TMUXPLUGINMANAGER=${HOME}"/.tmux/plugins/tpm"
 
 create_symlinks() {
     dotfiles=(".bashrc" ".gitconfig" ".screenrc" ".tmux.conf" ".zshrc" 
-    ".vimrc")
+    ".vimrc" ".lynxrc")
     for dotfile in "${dotfiles[@]}"; do
         ln -sf ${PWD}/${dotfile} ${HOME}/${dotfile} || error "Create symlink ${dotfile} failed."
         echo "Create symlink ${HOME}/${dotfile}"
