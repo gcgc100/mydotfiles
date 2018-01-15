@@ -78,6 +78,7 @@ install_with_brew(){
         brew install ctags
         brew install macvim --with-override-system-vim
         brew install autojump
+        brew install m-cli
         success "Brew packages installed"
     else
         warn "brew cmd not found"
