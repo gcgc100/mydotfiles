@@ -67,3 +67,11 @@ def $1(self, $1):
     """
     self._$1 = $1
 endsnippet
+
+snippet nosebp "Add a nosetest breakpoint"
+__import__("nose").tools.set_trace()
+endsnippet
+
+snippet pybp "Add a python pbd breakpoint"
+__import__('pdb').set_trace()  # XXX BREAKPOINT
+endsnippet

@@ -25,7 +25,7 @@ bash install.sh
 * [autojump](https://github.com/wting/autojump): Quick navigatio on terminal. Replace 'cd'.
 * [brew](https://brew.sh/): Install software on macOS.
 * [lynx](http://lynx.browser.org): A text browser for the World Wide Web.
-* [screen](https://www.gnu.org/software/screen/): Split screen in terminal. conf file:.screenrc [Another option: tmux](http://tmux.github.io/)).
+* [screen](https://www.gnu.org/software/screen/)(Using tmux now): Split screen in terminal. conf file:.screenrc [Another option: tmux](http://tmux.github.io/)).
 * [tree](http://www.computerhope.com/unix/tree.htm): List the contents of directories in a tree like format.
 
 
@@ -35,5 +35,8 @@ Inside tmux press **C-prefix I** to install plugins
 
 Dependencies: xclip, xsel
 
+# Features:
+* Automatically check update on github. Run git command in .zshrc to pull latest update.
+
 #TODO
-* Automatically check update on github.
+* Use git submodule to manage vim plugins. So the vim plugins will not in master branch when init. Not sure whether vundle can handle this scenario.
