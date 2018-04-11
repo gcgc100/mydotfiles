@@ -4,18 +4,21 @@ learn vim               vimtutor
 vim                     :help
 CTRL+]                  jump to next in help
 CTRL+t                  jump back
+
 highlight
 searching word          :set hls
 clear search highlight  :noh
-show                    hidder
+
+show                    hidden
 characters              :set list
+
 binary view             :%!xxd
 return                  :%!xxd -r
 (xxd is a shell cmd)
 goto file               gf
 search help             :helpgrep
 get options value       &           e.g.    &tm
-eval expr in substitute \=          e.g.  number+1  :s/\v(\d+)/\submatch(0)+1/g
+eval expr in substitute \=          e.g.  number+1  :s/\v(\d+)/\=submatch(0)+1/g
 
 vim multiple files  vi -o file1 file2
 read stdin into     ex:  ls | vi -
