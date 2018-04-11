@@ -39,6 +39,7 @@ Dependencies: xclip, xsel
 
 # Features:
 * Automatically check update on github. Run git command in .zshrc to pull latest update.
+* Use git submodule to auto download vim plugins. 
 
 #TODO
-* Use git submodule to manage vim plugins. So the vim plugins will not in master branch when init. Not sure whether vundle can handle this scenario.
+* How enable python3 in vim (mac, ubuntu)
