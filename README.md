@@ -9,6 +9,8 @@ git submodule update
 Install:
 bash install.sh
 
+Because the vim plugin is installed via *git clone*, need run :PluginInstall to generate the help file for plugins.
+
 # My Configuration Files and Software list
 
 * .vim .vimrc: vim configuration files and plugins
