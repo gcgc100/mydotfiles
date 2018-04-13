@@ -225,6 +225,7 @@ nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gb :Git branch<cr>
 nnoremap <leader>gps :Gpush<cr>
 nnoremap <leader>g? :map <leader>g<cr>
+autocmd QuickFixCmdPost *grep* cwindow
 "}}}
 "Languagetool{{{
 let g:languagetool_jar='$HOME/Documents/project/LanguageTool-3.7/languagetool-commandline.jar'
