@@ -105,6 +105,7 @@ set foldenable
 set foldlevelstart=10
 set wrap linebreak nolist
 set colorcolumn=80
+set backspace=indent,eol,start
 " set foldmethod=indent
 colorscheme peachpuff
 filetype plugin on
