@@ -12,14 +12,12 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'pangloss/vim-javascript'
-"Plugin 'danielmiessler/VimBlog'
 Plugin 'vim-scripts/VimRepress'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'lervag/vimtex'
-"Plugin 'ervandew/supertab'
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -33,7 +31,6 @@ let g:deoplete#sources._=['omni', 'buffer', 'member', 'tag', 'ultisnips', 'file'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mileszs/ack.vim'
-"Plugin 'python-mode/python-mode'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
@@ -41,10 +38,13 @@ Plugin 'vim-scripts/cream-capitalization'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
 "Python-mode {{{
- let g:pymode_breakpoint_cmd = "__import__('pdb').set_trace()  # XXX BREAKPOINT"
- let g:pymode_lint_on_write = 0
+ "let g:pymode_breakpoint_cmd = "__import__('pdb').set_trace()  # XXX BREAKPOINT"
+ "let g:pymode_lint_on_write = 0
 "}}}
 "Unused {{{
+"Plugin 'python-mode/python-mode'
+"Plugin 'ervandew/supertab'
+"Plugin 'danielmiessler/VimBlog'
 " Plugin 'vim-scripts/dbext.vim'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'flazz/vim-colorschemes'
@@ -60,7 +60,7 @@ filetype plugin indent on
 
 "Back filename. Open a file in a new vertical window but cursor not switch to
 "new window.{{{
-" TODO: <23-03-17, gc> Can not get arguments
+" TODO: <17-03-23, gc> Can not get arguments
 
 function! s:Back(file)
     let file = a:file
@@ -137,6 +137,7 @@ nnoremap <c-l> <c-w>l
 " Open previous buffer in a split window
 nnoremap <leader>pb :execute "rightbelow vsplit ".bufname("#")<cr>
 
+" Redraw the vim display.
 nnoremap <leader>d :redraw!<cr>
 "}}}
 "Status Line{{{
