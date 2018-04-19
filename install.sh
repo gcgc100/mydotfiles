@@ -144,6 +144,7 @@ install_tpm(){
 		git clone https://github.com/tmux-plugins/tpm ${TMUXPLUGINMANAGER} &>/dev/null
         success "Install tmux plugin tpm successfully"
 	fi
+    .tmux/plugins/tpm/scripts/install_plugins.sh
 }
 
 main() {
