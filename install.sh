@@ -43,7 +43,6 @@ program_must_exist() {
 }
 
 HOME=${HOME}
-PWD=`pwd`
 OH_MY_ZSH=${HOME}"/.oh-my-zsh"
 VUNDLE=${HOME}"/.vim/bundle/Vundle.vim"
 TMUXPLUGINMANAGER=${HOME}"/.tmux/plugins/tpm"
@@ -65,7 +64,7 @@ create_symlinks() {
 }
 
 install_brew(){
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" &>/dev/null || error "Install brew failed"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" || error "Install brew failed"
     success "Install brew successfully"
 }
 
@@ -125,9 +124,9 @@ install_vundle(){
 	else
 		echo "${VUNDLE} not exists. Git clone to create..."
 		git clone https://github.com/gmarik/Vundle.vim.git ${VUNDLE} &>/dev/null
-		vim +PluginInstall +qall
         success "Install vundle successfully"
 	fi
+    vim +PluginInstall +qall
 }
 
 # Tmux install `TPM`
