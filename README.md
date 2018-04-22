@@ -29,6 +29,7 @@ Because the vim plugin is installed via *git clone*, need run :PluginInstall to 
 * [lynx](http://lynx.browser.org): A text browser for the World Wide Web.
 * [screen](https://www.gnu.org/software/screen/)(Using tmux now): Split screen in terminal. conf file:.screenrc [Another option: tmux](http://tmux.github.io/)).
 * [tree](http://www.computerhope.com/unix/tree.htm): List the contents of directories in a tree like format.
+* [typora](https://www.typora.io/): A lightweight markdown editor and previewer.
 
 
 ## tmux plugin install
