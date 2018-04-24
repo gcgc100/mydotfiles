@@ -6,15 +6,31 @@ CTRL+]                  jump to next in help
 CTRL+t                  jump back
 
 highlight
-searching word          :set hls
 clear search highlight  :noh
 
-show                    hidden
-characters              :set list
+show hidden characters  :set list
+
+
+
+Convert variables to camel case:
+$name_like_this to nameLikeThis
+:s/\v%(\$%(\k+))@<=_(\k)/\u\1/g
+
+" Convert each NameLikeThis to name_like_this in current line.
+:s#\(\<\u\l\+\|\l\+\)\(\u\)#\l\1_\l\2#g
+
+" Alternative: accept numbers in name.
+:s#\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2#g
+
+\%(\)	A pattern enclosed by escaped parentheses.	*/\%(\)* */\%(* *E53*
+	Just like \(\), but without counting it as a sub-expression.  This
+	allows using more groups and it's a little bit faster.
+
 
 binary view             :%!xxd
 return                  :%!xxd -r
 (xxd is a shell cmd)
+
 goto file               gf
 search help             :helpgrep
 get options value       &           e.g.    &tm
@@ -28,7 +44,7 @@ help expr4                  Avaliable comparison operators
 help internal-variables     list of scopes
 help expr-quote             Escape sequences you can use in strings
 help autocmd-events         A list of all the events you can bind autocommands
-help partern-overview       regex help
+help pattern-overview       regex help
 
 Add help doc in vim:
 Add .txt help file in .vim/doc/.

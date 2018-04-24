@@ -86,19 +86,21 @@ source $ZSH/oh-my-zsh.sh
 bindkey "^p" up-line-or-search
 bindkey "^n" down-line-or-search
 
-source ~/.gc
-CWD=`pwd`
-cd $DOTFILEDIR
-echo "Check dotfiles"
-git fetch &>/dev/null
-git status | grep "up-to-date" &>/dev/null
-if [ $? -ne 0 ]; then
-    echo "Updating dot files ..."
-    git pull
-else
-    echo "Dotfiles are up-to-date"
+if [[ -a ~/.gc ]]; then
+    source ~/.gc
+    CWD=`pwd`
+    cd $DOTFILEDIR
+    echo "Check dotfiles"
+    git fetch &>/dev/null
+    git status | grep "up-to-date" &>/dev/null
+    if [ $? -ne 0 ]; then
+        echo "Updating dot files ..."
+        git pull
+    else
+        echo "Dotfiles are up-to-date"
+    fi
+    cd $CWD
 fi
-cd $CWD
 
 alias vit="vi -R -"
 alias vi="vim"

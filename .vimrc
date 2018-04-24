@@ -140,6 +140,13 @@ nnoremap <leader>pb :execute "rightbelow vsplit ".bufname("#")<cr>
 
 " Redraw the vim display.
 nnoremap <leader>d :redraw!<cr>
+
+" Convert variables to or from camel case
+" Usage:
+" http://vim.wikia.com/wiki/Converting_variables_to_or_from_camel_case
+" Disable by default in case change the doc by accident, enable it when you need.
+"nnoremap + /\$\w\+_<CR>
+"nnoremap _ f_x~
 "}}}
 "Status Line{{{
 " set statusline=%<%F%h%m%r%h%w%y\ %=\ col:%c%V\ ascii:%b\ pos:%o\ lin:%l/%L\ %P

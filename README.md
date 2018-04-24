@@ -1,15 +1,9 @@
 # Usage
 Clone prject:
-git clone https://github.com/gcgc100/mydotfiles.git --recursive
-or
 git clone https://github.com/gcgc100/mydotfiles.git
-git submodule init
-git submodule update
-
 Install:
 bash install.sh
 
-Because the vim plugin is installed via *git clone*, need run :PluginInstall to generate the help file for plugins.
 
 # My Configuration Files and Software list
 
@@ -34,12 +28,17 @@ Because the vim plugin is installed via *git clone*, need run :PluginInstall to 
 ## tmux plugin install
 apt-get install xsel on Linux or brew install reattach-to-user-clipboard on OS-X
 Inside tmux press **C-prefix I** to install plugins
+Install.sh will install tmux plugin automatically.
 
 Dependencies: xclip, xsel
 
 # Features:
 * Automatically check update on github. Run git command in .zshrc to pull latest update.
-* Use git submodule to auto download vim plugins. 
+
+# Solved Problems:
+Q: How enable python3 in vim
+A: Rebuild the vim. 
+    * Mac: brew install vim --with-python3
 
 #TODO
-* How enable python3 in vim (mac, ubuntu)
+* Auto update can not config itself in install.sh
