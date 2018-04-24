@@ -1,7 +1,8 @@
 if &compatible
   set nocompatible
 end
-" vundle configurations {{{
+
+" vundle configurations 
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -37,11 +38,11 @@ Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/cream-capitalization'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
-"Python-mode {{{
+"Python-mode 
  "let g:pymode_breakpoint_cmd = "__import__('pdb').set_trace()  # XXX BREAKPOINT"
  "let g:pymode_lint_on_write = 0
-"}}}
-"Unused {{{
+
+"Unused 
 "Plugin 'python-mode/python-mode'
 "Plugin 'ervandew/supertab'
 "Plugin 'danielmiessler/VimBlog'
@@ -50,16 +51,16 @@ Plugin 'tpope/vim-surround'
 " Plugin 'flazz/vim-colorschemes'
 " colo railscasts
 "Plugin 'tpope/tpope-vim-abolish'
-"}}}
+
 syntax on
 filetype on
 call vundle#end()
 filetype plugin indent on
-" }}}
-"New Command{{{
+" 
+"New Command
 
 "Back filename. Open a file in a new vertical window but cursor not switch to
-"new window.{{{
+"new window.
 " TODO: <17-03-23, gc> Can not get arguments
 
 function! s:Back(file)
@@ -68,11 +69,11 @@ function! s:Back(file)
     normal <c-w><c-w>
 endfunction
 command! -complete=file -nargs=+ Back call s:Back(<q-args>)
-"}}}
-"sudo write a file{{{
+
+"sudo write a file
 command! W w !sudo tee % > /dev/null
-"}}}
-"Shell cmd. A new shell runner ------ {{{
+
+"Shell cmd. A new shell runner ------ 
 function! s:ExecuteInShell(command)
   let command = join(map(split(a:command), 'expand(v:val)'))
   let winnr = bufwinnr('^' . command . '$')
@@ -87,12 +88,12 @@ function! s:ExecuteInShell(command)
   echo 'Shell command ' . command . ' executed.'
 endfunction
 command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
-"}}}
+
 
 command! -nargs=+ Grep execute 'silent grep! <args>' | copen 42
 
-"}}}
-"Basic Setting ------{{{
+
+"Basic Setting ------
 let g:tex_flavor = "latex"
 set hlsearch
 set incsearch
@@ -106,11 +107,22 @@ set foldlevelstart=10
 set wrap linebreak nolist
 set colorcolumn=80
 set backspace=indent,eol,start
+
+if empty($TMUX)
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+else
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+endif
+
 " set foldmethod=indent
 colorscheme peachpuff
 filetype plugin on
-"}}}
-"Mapping ----{{{
+
+"Mapping ----
 "Open .vimrc, Source .vimrc, Open .vimrc.bundles.temp
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -147,15 +159,15 @@ nnoremap <leader>d :redraw!<cr>
 " Disable by default in case change the doc by accident, enable it when you need.
 "nnoremap + /\$\w\+_<CR>
 "nnoremap _ f_x~
-"}}}
-"Status Line{{{
+
+"Status Line
 " set statusline=%<%F%h%m%r%h%w%y\ %=\ col:%c%V\ ascii:%b\ pos:%o\ lin:%l/%L\ %P
 set laststatus=2
-"}}}
-"FileType-specific settings ---------{{{
 
-"}}}
-"Other vimscripts{{{
+"FileType-specific settings ---------
+
+
+"Other vimscripts
 if filereadable(expand(tempVimrc))
   execute "source ".expand(tempVimrc)
 endif
@@ -164,19 +176,19 @@ if filereadable(expand("~/.vimrc.secret"))
     execute "source ".expand("~/.vimrc.secret")
 endif
 
-"}}}
-"vimblog (vimpress) {{{
+
+"vimblog (vimpress) 
 nnoremap <leader>b? :map <leader>b<cr>
 nnoremap <leader>bn :BlogNew post<cr>
 nnoremap <leader>bs :BlogSave<cr>
 nnoremap <leader>bp :BlogSave publish<cr>
 nnoremap <leader>bl :BlogList<cr>
-"}}}
-"tagbar {{{
+
+"tagbar 
 let g:tagbar_autofocus = 1
 nnoremap <F3> :TagbarToggle<cr>
-"}}}
-"Airline {{{
+
+"Airline 
 let g:airline_theme="cool" 
 " let g:airline_left_sep='>'
 " let g:airline_powerline_fonts = 1   
@@ -187,22 +199,22 @@ nnoremap <C-P> :bp<CR>
 
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
-"}}}
-"nerdtree {{{
+
+"nerdtree 
 map <F2> :NERDTreeToggle<cr>
 " Close NERDTree, if it is the last buffer opened.
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Set the position
 let g:NERDTreeWinPos = "right"
-"}}}
-"Vimtex {{{
+
+"Vimtex 
 let g:vimtex_enabled = 0
 let b:vimtex_main = 'main.tex'
 let g:vimtex_disable_recursive_main_file_detection = 1
 let g:vimtex_toc_refresh_always = 0
 let g:vimtex_complete_enabled = 0
-"}}}
-" Snippets Configuration -------{{{
+
+" Snippets Configuration -------
 " Track the engine.
 " UltiSnips setting
 " make vim recognizing snippets dir
@@ -222,8 +234,8 @@ let g:UltiSnipsEnableSnipMate = 0
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-" }}}
-"Fugitive{{{
+" 
+"Fugitive
 nnoremap <leader>ga :Git add %:p<cr><cr>
 nnoremap <leader>ga. : Git add .<cr>
 nnoremap <leader>gs :Gstatus<cr>
@@ -235,8 +247,8 @@ nnoremap <leader>gb :Git branch<cr>
 nnoremap <leader>gps :Gpush<cr>
 nnoremap <leader>g? :map <leader>g<cr>
 autocmd QuickFixCmdPost *grep* cwindow
-"}}}
-"Languagetool{{{
+
+"Languagetool
 let g:languagetool_jar='$HOME/Documents/project/LanguageTool-3.7/languagetool-commandline.jar'
-"}}}
+
 " vim:foldmethod=marker:foldlevel=0
