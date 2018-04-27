@@ -20,14 +20,30 @@ iTerm2->Preferences->Profiles->Other Actions...->Bulk Copy from Selected Profile
 * itermProfile: profile for iterm2. Import it manually.
 
 ## Software list:
-* [xterm2](https://www.iterm2.com/): New terminal on OS X.
-* [tmux](https://github.com/tmux/tmux): tmux:terminal multiplexer.
-* [autojump](https://github.com/wting/autojump): Quick navigatio on terminal. Replace 'cd'.
-* [brew](https://brew.sh/): Install software on macOS.
-* [lynx](http://lynx.browser.org): A text browser for the World Wide Web.
-* [screen](https://www.gnu.org/software/screen/)(Using tmux now): Split screen in terminal. conf file:.screenrc [Another option: tmux](http://tmux.github.io/)).
-* [tree](http://www.computerhope.com/unix/tree.htm): List the contents of directories in a tree like format.
-* [typora](https://www.typora.io/): A lightweight markdown editor and previewer.
+* With GUI:
+    * [xterm2](https://www.iterm2.com/): New terminal on OS X.
+    * [mindnote](https://mindnode.com/mindnode/mac): Capture your thoughts.
+    * [notibality](http://gingerlabs.com/): Note taking.
+    * [alfred](https://www.alfredapp.com/): Quick access anything on Mac.
+    * [typora](https://www.typora.io/): A lightweight markdown editor and previewer.
+    * [skim](https://skim-app.sourceforge.io/): PDF reader on mac.
+    * [Endnote](http://endnote.com/): Paper organize.
+    * Chrome
+* terminal cmd:
+    * [brew](https://brew.sh/): Install software on macOS.
+    * [tmux](https://github.com/tmux/tmux): tmux:terminal multiplexer.
+    * [autojump](https://github.com/wting/autojump): Quick navigatio on terminal. Replace 'cd'.
+    * [tree](http://www.computerhope.com/unix/tree.htm): List the contents of directories in a tree like format.
+    * [pandoc](http://www.pandoc.org/): General markup convertor.
+    * [lynx](http://lynx.browser.org): A text browser for the World Wide Web.
+    * [zsh](http://zsh.sourceforge.net/): Zsh shell.
+    * ~~[screen](https://www.gnu.org/software/screen/)(Using tmux now): Split screen in terminal. conf file:.screenrc [Another option: tmux](http://tmux.github.io/)).~~
+* Program Language:
+    * Python
+    * R
+    * Latex
+* Try:
+    * [qutebrowser](https://www.qutebrowser.org/index.html): A keyboard-driven, vim-like browse.
 
 
 ## tmux plugin install
