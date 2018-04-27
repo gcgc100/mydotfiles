@@ -106,6 +106,7 @@ set foldlevelstart=10
 set wrap linebreak nolist
 set colorcolumn=80
 set backspace=indent,eol,start
+set autowrite
 
 if empty($TMUX)
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -118,7 +119,7 @@ else
 endif
 
 " set foldmethod=indent
-colorscheme peachpuff
+colorscheme molokai
 filetype plugin on
 "}}}
 "Mapping ----{{{
