@@ -4,6 +4,9 @@ git clone https://github.com/gcgc100/mydotfiles.git
 Install:
 bash install.sh
 
+If on macOS and using iTerm2: import the profile
+iTerm2->Preferences->Profiles->Other Actions...->Bulk Copy from Selected Profile(itermProfile)
+
 
 # My Configuration Files and Software list
 
@@ -14,6 +17,7 @@ bash install.sh
 * .tmux.: tmux 
 * .screenrc: screen 
 * .lynxrc: lynx
+* itermProfile: profile for iterm2. Import it manually.
 
 ## Software list:
 * [xterm2](https://www.iterm2.com/): New terminal on OS X.
