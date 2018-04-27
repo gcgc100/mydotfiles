@@ -119,7 +119,7 @@ else
 endif
 
 " set foldmethod=indent
-colorscheme molokai
+colorscheme solarized
 filetype plugin on
 "}}}
 "Mapping ----{{{
