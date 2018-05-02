@@ -94,8 +94,13 @@ command! -nargs=+ Grep execute 'silent grep! <args>' | copen 42
 "}}}
 "Basic Setting ------{{{
 let g:tex_flavor = "latex"
+" Highlight search results
 set hlsearch
+" Makes search act like search in modern browsers
 set incsearch
+" Don't redraw while executing macros (good performance config)
+set lazyredraw 
+set background=dark
 set number
 let mapleader=";"
 set expandtab ts=4 sw=4 ai
@@ -105,8 +110,21 @@ set foldenable
 set foldlevelstart=10
 set wrap linebreak nolist
 set colorcolumn=80
-set backspace=indent,eol,start
 set autowrite
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+" Set to auto read when a file is changed from the outside
+set autoread
+" Turn on the Wild menu
+set wildmenu
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
+if has("win16") || has("win32")
+    set wildignore+=.git\*,.hg\*,.svn\*
+else
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+endif
 
 if empty($TMUX)
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -152,6 +170,31 @@ nnoremap <leader>pb :execute "rightbelow vsplit ".bufname("#")<cr>
 
 " Redraw the vim display.
 nnoremap <leader>d :redraw!<cr>
+""""""""""""""""""""""""""""""
+" => Visual mode related
+""""""""""""""""""""""""""""""
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", "\\/.*'$^~[]")
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'gv'
+        call CmdLine("Ack '" . l:pattern . "' " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
 
 " Convert variables to or from camel case
 " Usage:
@@ -194,8 +237,8 @@ let g:airline_theme="cool"
 " let g:airline_powerline_fonts = 1   
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-nnoremap <C-N> :bn<CR>
-nnoremap <C-P> :bp<CR>
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprevious<CR>
 
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
