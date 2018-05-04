@@ -111,5 +111,5 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabageced 
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;4m\]\W\[\033[m\]\$ "
 
- [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-. /usr/share/autojump/autojump.sh
+# [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+#. /usr/share/autojump/autojump.sh

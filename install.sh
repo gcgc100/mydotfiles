@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ############################  BASIC SETUP TOOLS
 msg() {
@@ -44,8 +44,7 @@ program_must_exist() {
 
 HOME=${HOME}
 OH_MY_ZSH=${HOME}"/.oh-my-zsh"
-VUNDLE=${HOME}"/.vim/bundle/Vundle.vim"
-TMUXPLUGINMANAGER=${HOME}"/.tmux/plugins/tpm"
+VUNDLE=${HOME}"/.vim/bundle/Vundle.vim" TMUXPLUGINMANAGER=${HOME}"/.tmux/plugins/tpm"
 
 create_symlinks() {
     dotfiles=(".bashrc" ".gitconfig" ".screenrc" ".tmux.conf" ".zshrc" 
@@ -75,7 +74,7 @@ install_with_brew(){
         brew install tree
         brew install tmux
         brew install ctags
-        brew install macvim --with-override-system-vim
+        #brew install macvim --with-override-system-vim
         brew install autojump
         brew install m-cli
         success "Brew packages installed"
@@ -85,7 +84,7 @@ install_with_brew(){
 }
 
 install_pip(){
-    python get-pip.py --prefix=/usr/local/ &>/dev/null || error "Install pip failed"
+    python get-pip.py --prefix=/usr/local # &>/dev/null || error "Install pip failed"
     success "Install pip successfully"
     easy_install nose &>/dev/null || error "Install nosetests failed"
     success "Install nosetests successfully"
@@ -93,21 +92,22 @@ install_pip(){
 
 install_oh_my_zsh(){
 	if [ -d "${OH_MY_ZSH}"  ]; then
-		cd "${OH_MY_ZSH}"
-		msg "Change directory to `pwd`"
-		msg "${OH_MY_ZSH} exists. Git pull to update..."
-		git pull &>/dev/null || error "Update oh-my-zsh failed"
-		cd - > /dev/null 2>&1
-		msg "Change directory back to `pwd`"
-        success "Update oh-my-zsh successfully"
-	else
-		msg "${OH_MY_ZSH} not exists. Install..."
-		#git clone git@github.com:robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
-		#wget --no-check-certificate http://install.ohmyz.sh -O - | sh
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" &>/dev/null || "Install oh-my-zsh failed"
-        success "Install oh-my-zsh successfully"
-		#git clone https://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
-	fi
+        rm -rf ${OH_MY_ZSH}
+        msg "Remove old oh-my-zsh"
+		#cd "${OH_MY_ZSH}"
+		#msg "Change directory to `pwd`"
+		#msg "${OH_MY_ZSH} exists. Git pull to update..."
+		#git pull &>/dev/null || error "Update oh-my-zsh failed"
+		#cd - > /dev/null 2>&1
+		#msg "Change directory back to `pwd`"
+        #success "Update oh-my-zsh successfully"
+    fi
+    msg "${OH_MY_ZSH} not exists. Install..."
+    #git clone git@github.com:robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
+    #wget --no-check-certificate http://install.ohmyz.sh -O - | sh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" # &>/dev/null || "Install oh-my-zsh failed"
+    success "Install oh-my-zsh successfully"
+    #git clone https://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
 }
 
 # Vim install `Vundle` and plugins
@@ -144,7 +144,12 @@ install_tpm(){
 		git clone https://github.com/tmux-plugins/tpm ${TMUXPLUGINMANAGER} &>/dev/null
         success "Install tmux plugin tpm successfully"
 	fi
-    .tmux/plugins/tpm/scripts/install_plugins.sh
+    command -v tmux
+    if [ "$?" -eq 0 ]; then
+        .tmux/plugins/tpm/scripts/install_plugins.sh
+    else
+        warn "Tmux not found, so ignore tmux plugin"
+    fi
 }
 
 main() {
@@ -155,6 +160,12 @@ main() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         install_brew
         install_with_brew
+    elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        sudo apt-get install zsh
+        sudo apt-get install tmux
+        sudo apt-get install tree
+        sudo apt-get install ctags
+        sudo apt-get install autojump
     fi
     install_pip
     install_oh_my_zsh

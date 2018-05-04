@@ -1,6 +1,4 @@
-if &compatible
-  set nocompatible
-end
+set nocompatible
 " vundle configurations {{{
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -137,7 +135,7 @@ else
 endif
 
 " set foldmethod=indent
-colorscheme solarized
+colorscheme molokai
 filetype plugin on
 "}}}
 "Mapping ----{{{
