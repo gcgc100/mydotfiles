@@ -39,9 +39,13 @@ iTerm2->Preferences->Profiles->Other Actions...->Bulk Copy from Selected Profile
     * [zsh](http://zsh.sourceforge.net/): Zsh shell.
     * ~~[screen](https://www.gnu.org/software/screen/)(Using tmux now): Split screen in terminal. conf file:.screenrc [Another option: tmux](http://tmux.github.io/)).~~
 * Program Language:
-    * Python
+    * Python(pip package)
+        * nosetests
+        * selenium
     * R
     * Latex
+    * NodeJS(npm package)
+        * tldr
 * Try:
     * [qutebrowser](https://www.qutebrowser.org/index.html): A keyboard-driven, vim-like browse.
 
