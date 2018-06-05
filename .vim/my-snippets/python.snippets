@@ -75,3 +75,17 @@ endsnippet
 snippet pybp "Add a python pbd breakpoint"
 __import__('pdb').set_trace()  # XXX BREAKPOINT
 endsnippet
+
+snippet importParent "Import module from parent dir"
+import sys
+import os
+import inspect
+
+current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parent_dir = os.path.dirname(current_dir)
+sys.path.insert(0, parent_dir) 
+endsnippet
+
+snippet filedir "Return python file path"
+current_dir = os.path.abspath(inspect.getfile(inspect.currentframe()))
+endsnippet
