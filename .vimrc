@@ -144,6 +144,9 @@ vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
 cnoremap w <nop>
 
+nnoremap / /\v
+cnoremap %s/ %s/\v
+
 "Mapping ----{{{
 "Open .vimrc, Source .vimrc, Open .vimrc.bundles.temp
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
