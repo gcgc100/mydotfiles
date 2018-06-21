@@ -138,6 +138,12 @@ endif
 colorscheme molokai
 filetype plugin on
 "}}}
+
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
+cnoremap w <nop>
+
 "Mapping ----{{{
 "Open .vimrc, Source .vimrc, Open .vimrc.bundles.temp
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -148,6 +154,8 @@ nnoremap <leader>et :execute "vsplit ".tempVimrc<cr>
 " Home and End
 nnoremap H 0
 nnoremap L $
+vnoremap H 0
+vnoremap L $
 
 " Get out of insert model
 inoremap jk <esc>
