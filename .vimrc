@@ -1,4 +1,11 @@
 set nocompatible
+
+let g:os_osx = has('macunix')
+let g:os_linux = has('unix') && !has('macunix') && !has('win32unix')
+let g:os_windows = has('win32')
+let g:is_nvim = has('nvim')
+let s:is_gui = has('gui_running')
+
 " vundle configurations {{{
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -92,15 +99,11 @@ command! -nargs=+ Grep execute 'silent grep! <args>' | copen 42
 "}}}
 "Basic Setting ------{{{
 let g:tex_flavor = "latex"
-" Highlight search results
-set hlsearch
-" Makes search act like search in modern browsers
-set incsearch
 " Don't redraw while executing macros (good performance config)
 set lazyredraw 
 set background=dark
 set number
-let mapleader=";"
+let g:mapleader=get(g:, "mapleader", ";")
 set expandtab ts=4 sw=4 ai
 set softtabstop=4
 set cursorline
@@ -109,6 +112,7 @@ set foldlevelstart=10
 set wrap linebreak nolist
 set colorcolumn=80
 set autowrite
+set noswapfile
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
@@ -123,6 +127,12 @@ if has("win16") || has("win32")
 else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
+" Highlight search results
+set hlsearch
+" Makes search act like search in modern browsers
+set incsearch
+set ignorecase
+set smartcase
 
 if empty($TMUX)
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -142,6 +152,7 @@ filetype plugin on
 "Open .vimrc, Source .vimrc, Open .vimrc.bundles.temp
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>ez :e ~/.zshrc<cr>
 let tempVimrc = "~/.vimrc.bundles.temp"
 nnoremap <leader>et :execute "vsplit ".tempVimrc<cr>
 
@@ -197,10 +208,11 @@ endfunction
 map <silent> <leader><cr> :noh<cr>
 
 " Use ctrl-s to save file. Disable w to train finger.
-noremap <silent> <C-S>          :update<CR>
-vnoremap <silent> <C-S>         <C-C>:update<CR>
+noremap <silent> <C-S>          :<C-U>w<CR>
+vnoremap <silent> <C-S>         :<C-U>w<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
-cnoremap w <nop>
+cnoremap <silent> <C-S>         <C-U>w<CR>
+cnoremap w<cr> <nop>
 
 " Force very magic mode when search or replace text
 nnoremap / /\v
@@ -216,6 +228,7 @@ cnoremap %s/ %s/\v
 "Autocmds {{{
 if has("autocmd") 
     augroup templates 
+        autocmd!
         autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
         autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py
         autocmd BufNewFile *.html,*.htm 0r ~/.vim/templates/skeleton.html
