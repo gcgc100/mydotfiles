@@ -47,7 +47,7 @@ iTerm2->Preferences->Profiles->Other Actions...->Bulk Copy from Selected Profile
     * NodeJS(npm package)
         * tldr
 * Try:
-    * [qutebrowser](https://www.qutebrowser.org/index.html): A keyboard-driven, vim-like browse.
+    ~~* [qutebrowser](https://www.qutebrowser.org/index.html): A keyboard-driven, vim-like browse.~~
 
 
 ## tmux plugin install
@@ -58,7 +58,7 @@ Install.sh will install tmux plugin automatically.
 Dependencies: xclip, xsel
 
 # Features:
-* Automatically check update on github. Run git command in .zshrc to pull latest update.
+~~* Automatically check update on github. Run git command in .zshrc to pull latest update.~~
 
 # Solved Problems:
 Q: How enable python3 in vim
@@ -66,4 +66,3 @@ A: Rebuild the vim.
     * Mac: brew install vim --with-python3
 
 #TODO
-* Auto update can not config itself in install.sh
