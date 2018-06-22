@@ -138,15 +138,6 @@ endif
 colorscheme molokai
 filetype plugin on
 "}}}
-
-noremap <silent> <C-S>          :update<CR>
-vnoremap <silent> <C-S>         <C-C>:update<CR>
-inoremap <silent> <C-S>         <C-O>:update<CR>
-cnoremap w <nop>
-
-nnoremap / /\v
-cnoremap %s/ %s/\v
-
 "Mapping ----{{{
 "Open .vimrc, Source .vimrc, Open .vimrc.bundles.temp
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -205,12 +196,31 @@ endfunction
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
+" Use ctrl-s to save file. Disable w to train finger.
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
+cnoremap w <nop>
+
+" Force very magic mode when search or replace text
+nnoremap / /\v
+cnoremap %s/ %s/\v
+
 " Convert variables to or from camel case
 " Usage:
 " http://vim.wikia.com/wiki/Converting_variables_to_or_from_camel_case
 " Disable by default in case change the doc by accident, enable it when you need.
 "nnoremap + /\$\w\+_<CR>
 "nnoremap _ f_x~
+"}}}
+"Autocmds {{{
+if has("autocmd") 
+    augroup templates 
+        autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
+        autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py
+        autocmd BufNewFile *.html,*.htm 0r ~/.vim/templates/skeleton.html
+    augroup END
+endif"
 "}}}
 "Status Line{{{
 " set statusline=%<%F%h%m%r%h%w%y\ %=\ col:%c%V\ ascii:%b\ pos:%o\ lin:%l/%L\ %P
