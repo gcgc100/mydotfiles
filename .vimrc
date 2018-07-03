@@ -232,6 +232,7 @@ if has("autocmd")
         autocmd!
         autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
         autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py
+        autocmd BufNewFile *.R 0r ~/.vim/templates/skeleton.R
         autocmd BufNewFile *.html,*.htm 0r ~/.vim/templates/skeleton.html
     augroup END
 endif"
