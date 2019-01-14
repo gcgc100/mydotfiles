@@ -42,7 +42,9 @@ iTerm2->Preferences->Profiles->Other Actions...->Bulk Copy from Selected Profile
     * Python(pip package)
         * nosetests
         * selenium
+        * lxml
     * R
+        * ggplot
     * Latex
     * NodeJS(npm package)
         * tldr
