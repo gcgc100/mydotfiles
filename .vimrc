@@ -214,11 +214,15 @@ noremap <silent> <C-S>          :<C-U>w<CR>
 vnoremap <silent> <C-S>         :<C-U>w<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
 cnoremap <silent> <C-S>         <C-U>w<CR>
-cnoremap w<cr> <nop>
+"cnoremap w<cr> <nop>
 
 " Force very magic mode when search or replace text
 nnoremap / /\v
 cnoremap %s/ %s/\v
+
+" Disable uppercase and lowercase change in visual mode
+vnoremap u <nop>
+vnoremap U <nop>
 
 " Convert variables to or from camel case
 " Usage:
