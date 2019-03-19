@@ -12,3 +12,5 @@
 [push]
 	; for git 1.8
 	default = simple
+[core]
+	editor = /usr/local/bin/vim

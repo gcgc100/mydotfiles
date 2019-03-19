@@ -109,3 +109,5 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 stty -ixon
+
+export ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs"

@@ -6,6 +6,7 @@ let g:os_windows = has('win32')
 let g:is_nvim = has('nvim')
 let s:is_gui = has('gui_running')
 
+let g:syntastic_python_checkers = ["pylint"]
 " vundle configurations {{{
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
