@@ -24,12 +24,14 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'lervag/vimtex'
-if has('nvim')
-  Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plugin 'Shougo/deoplete.nvim'
-  Plugin 'roxma/nvim-yarp'
-  Plugin 'roxma/vim-hug-neovim-rpc'
+if version >= 800
+    if has('nvim')
+      Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+      Plugin 'Shougo/deoplete.nvim'
+      Plugin 'roxma/nvim-yarp'
+      Plugin 'roxma/vim-hug-neovim-rpc'
+    endif
 endif
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources = {}
