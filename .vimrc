@@ -257,8 +257,8 @@ if filereadable(expand(tempVimrc))
   execute "source ".expand(tempVimrc)
 endif
 
-if filereadable(expand("~/.vimrc.secret"))
-    execute "source ".expand("~/.vimrc.secret")
+if filereadable(expand("~/.vimrc.local"))
+    execute "source ".expand("~/.vimrc.local")
 endif
 
 "}}}
