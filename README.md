@@ -13,10 +13,11 @@ iTerm2->Preferences->Profiles->Other Actions...->Bulk Copy from Selected Profile
 * .vim .vimrc: vim configuration files and plugins
 * .bashrc: bash 
 * .zshrc: zsh 
-* .gitig: git 
+* .gitconfig: git 
 * .tmux.: tmux 
-* .screenrc: screen 
 * .lynxrc: lynx
+* .sqliterc: sqlite3
+* .screenrc: screen (No more maintenance)
 * itermProfile: profile for iterm2. Import it manually.
 
 ## Software list:
@@ -63,8 +64,8 @@ Dependencies: xclip, xsel
 ~~* Automatically check update on github. Run git command in .zshrc to pull latest update.~~
 
 # Solved Problems:
-Q: How enable python3 in vim
+Q: How to enable python3 in vim
 A: Rebuild the vim. 
     * Mac: brew install vim --with-python3
 
-#TODO
+# TODO
