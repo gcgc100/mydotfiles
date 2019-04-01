@@ -1,8 +1,12 @@
 # Usage
 Clone prject:
+
 git clone https://github.com/gcgc100/mydotfiles.git
+
 Install:
+```
 bash install.sh
+```
 
 If on macOS and using iTerm2: import the profile
 iTerm2->Preferences->Profiles->Other Actions...->Bulk Copy from Selected Profile(itermProfile)
