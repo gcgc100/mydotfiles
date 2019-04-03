@@ -11,6 +11,11 @@ bash install.sh
 If on macOS and using iTerm2: import the profile
 iTerm2->Preferences->Profiles->Other Actions...->Bulk Copy from Selected Profile(itermProfile)
 
+Install python modules
+```
+pip3 install -r pythonLibrary.txt
+```
+
 
 # My Configuration Files and Software list
 
@@ -45,12 +50,15 @@ iTerm2->Preferences->Profiles->Other Actions...->Bulk Copy from Selected Profile
     * ~~[screen](https://www.gnu.org/software/screen/)(Using tmux now): Split screen in terminal. conf file:.screenrc [Another option: tmux](http://tmux.github.io/)).~~
 * Program Language:
     * Python(pip package)
-        * nosetests
-        * selenium
-        * lxml
+        * nosetests (python tests)
+        * selenium (browser automation)
+        * lxml (processing XML and HTML)
+        * pony (ORM database accessing)
     * R
         * ggplot
+        * dplyr
     * Latex
+        * ctex
     * NodeJS(npm package)
         * tldr
 * Try:
