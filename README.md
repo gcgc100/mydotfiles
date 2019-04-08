@@ -42,7 +42,8 @@ pip3 install -r pythonLibrary.txt
 * terminal cmd:
     * [brew](https://brew.sh/): Install software on macOS.
     * [tmux](https://github.com/tmux/tmux): tmux:terminal multiplexer.
-    * [autojump](https://github.com/wting/autojump): Quick navigatio on terminal. Replace 'cd'.
+    * ~~[autojump](https://github.com/wting/autojump): Quick navigatio on terminal. Replace 'cd'.~~Replaced by z. 
+    * [z](https://github.com/rupa/z): Same with autojump, but smaller and faster. Use alias for frequently used dir. z is used as an statistic tool to tell which dir is frequently used. The 'cd' result of z is not accurate, so not recommend to use directly.
     * [tree](http://www.computerhope.com/unix/tree.htm): List the contents of directories in a tree like format.
     * [pandoc](http://www.pandoc.org/): General markup convertor.
     * [lynx](http://lynx.browser.org): A text browser for the World Wide Web.

@@ -75,7 +75,7 @@ install_with_brew(){
         brew install tmux
         brew install ctags
         #brew install macvim --with-override-system-vim
-        brew install autojump
+        #brew install autojump
         brew install m-cli
         success "Brew packages installed"
     else
@@ -105,8 +105,10 @@ install_oh_my_zsh(){
     msg "${OH_MY_ZSH} not exists. Install..."
     #git clone git@github.com:robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
     #wget --no-check-certificate http://install.ohmyz.sh -O - | sh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" # &>/dev/null || "Install oh-my-zsh failed"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" #&>/dev/null || "Install oh-my-zsh failed"
     success "Install oh-my-zsh successfully"
+    rm -f $HOME/.zshrc
+    ln -sf ${PWD}/.zshrc ${HOME}/.zshrc || error "Create symlink .zshrc failed."
     #git clone https://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
 }
 
@@ -152,6 +154,17 @@ install_tpm(){
     fi
 }
 
+install_z(){
+	if [ -d "${HOME}/z" ]; then
+        msg "~/z already exists. Can not clone z project."
+    else
+        cd $HOME
+        msg "Git clone z"
+        git clone git@github.com:rupa/z.git
+        cd - > /dev/null 2>&1
+    fi
+}
+
 main() {
     program_must_exist "python"
     program_must_exist "vim"
@@ -171,6 +184,7 @@ main() {
     install_oh_my_zsh
     install_vundle
     install_tpm
+    install_z
 }
 
 main

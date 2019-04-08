@@ -102,8 +102,9 @@ bindkey "^n" down-line-or-search
 #    cd $CWD
 #fi
 
-alias vit="vi -R -"
-alias vi="vim"
+alias vit="vim -R -"
+alias vi="echo 'Used to use vi as vim. Not a good habit.'"
+alias v="vim"
 alias rm="rm -i"
 alias cp='cp -i'
 alias mv='mv -i'
@@ -111,3 +112,11 @@ alias mv='mv -i'
 stty -ixon
 
 export ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
+. $HOME/z/z.sh
+
+if [[ -f ~/.zshrc.local ]]; then
+    source ~/.zshrc.local
+    alias wiki="cd "$MYLIB"/wiki/"
+    alias dot="cd "$MYLIB"/mydotfiles"
+    alias latex="cd "$MYWORKSPACE"/latex/"
+fi
