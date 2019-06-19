@@ -52,3 +52,5 @@ Add .txt help file in .vim/doc/.
 Run :helptags
 
 list the loaded vimrc:  :version
+
+format json: %!python3 -m json.tool

@@ -116,7 +116,4 @@ export ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
 
 if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
-    alias wiki="cd "$MYLIB"/wiki/"
-    alias dot="cd "$MYLIB"/mydotfiles"
-    alias latex="cd "$MYWORKSPACE"/latex/"
 fi
