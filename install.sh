@@ -179,8 +179,11 @@ main() {
         sudo apt-get install tree
         sudo apt-get install ctags
         sudo apt-get install autojump
+        sudo apt-get install python3-pip
+        sudo apt-get install python-pip
     fi
     install_pip
+    pip install pynvim  # vim plugin deoplete need it
     install_oh_my_zsh
     install_vundle
     install_tpm
