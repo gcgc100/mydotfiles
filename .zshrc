@@ -117,3 +117,9 @@ export ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
 if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
 fi
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
+
+mkcd () {
+  mkdir "$1"
+  cd "$1"
+}
