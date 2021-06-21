@@ -51,7 +51,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gitignore osx autojump tmux pip copyfile)
+plugins=(git gitignore osx autojump tmux pip copyfile zoxide)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,17 +109,19 @@ alias rm="rm -i"
 alias cp='cp -i'
 alias mv='mv -i'
 
+alias cd="echo 'Disable cd. Force use z to replace cd.'"
+
 stty -ixon
 
 export ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
-. $HOME/z/z.sh
+#. $HOME/z/z.sh
 
 if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
 fi
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
 
 mkcd () {
   mkdir "$1"
   cd "$1"
 }
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles

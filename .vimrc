@@ -7,6 +7,9 @@ let g:is_nvim = has('nvim')
 let s:is_gui = has('gui_running')
 
 let g:syntastic_python_checkers = ["pylint"]
+let g:syntastic_python_pylint_exe = 'python3 -m pylint'
+let g:syntastic_python_python_exec = 'python3'
+"let g:syntastic_python_checkers = ['python']
 " vundle configurations {{{
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -18,7 +21,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'pangloss/vim-javascript'
-Plugin 'vim-scripts/VimRepress'
+"Plugin 'vim-scripts/VimRepress'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -45,7 +48,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/cream-capitalization'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
-Plugin 'iamcco/markdown-preview.vim'
+"Plugin 'iamcco/markdown-preview.vim'
 Plugin 'chiedo/vim-case-convert'
 "Python-mode {{{
  "let g:pymode_breakpoint_cmd = "__import__('pdb').set_trace()  # XXX BREAKPOINT"
@@ -286,7 +289,8 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
 "}}}
 "nerdtree {{{
-map <F2> :NERDTreeToggle<cr>
+"map <F2> :NERDTreeToggle<cr>
+map <leader>n :NERDTreeToggle<cr>
 " Close NERDTree, if it is the last buffer opened.
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Set the position
@@ -296,7 +300,7 @@ let g:NERDTreeWinPos = "right"
 let g:vimtex_enabled = 0
 let b:vimtex_main = 'main.tex'
 let g:vimtex_disable_recursive_main_file_detection = 1
-let g:vimtex_toc_refresh_always = 0
+"let g:vimtex_toc_refresh_always = 0
 let g:vimtex_complete_enabled = 0
 "}}}
 " Snippets Configuration -------{{{

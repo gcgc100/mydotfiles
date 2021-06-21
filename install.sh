@@ -74,6 +74,8 @@ install_with_brew(){
         brew install tree
         brew install tmux
         brew install ctags
+        brew install zoxide
+        brew install fzf
         #brew install macvim --with-override-system-vim
         #brew install autojump
         brew install m-cli
@@ -171,14 +173,18 @@ main() {
     program_must_exist "git"
     create_symlinks
     if [[ "$OSTYPE" == "darwin"* ]]; then
+        # Mac OSX
         install_brew
         install_with_brew
     elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        # Linux
         sudo apt-get install zsh
         sudo apt-get install tmux
         sudo apt-get install tree
         sudo apt-get install ctags
-        sudo apt-get install autojump
+        #sudo apt-get install autojump
+        sudo apt-get install zoxide
+        sudo apt-get install fzf
         sudo apt-get install python3-pip
         sudo apt-get install python-pip
     fi
