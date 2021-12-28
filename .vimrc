@@ -6,10 +6,6 @@ let g:os_windows = has('win32')
 let g:is_nvim = has('nvim')
 let s:is_gui = has('gui_running')
 
-let g:syntastic_python_checkers = ["pylint"]
-let g:syntastic_python_pylint_exe = 'python3 -m pylint'
-let g:syntastic_python_python_exec = 'python3'
-"let g:syntastic_python_checkers = ['python']
 " vundle configurations {{{
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -22,7 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'pangloss/vim-javascript'
 "Plugin 'vim-scripts/VimRepress'
-Plugin 'majutsushi/tagbar'
+"Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
@@ -37,8 +33,8 @@ if version >= 800
     endif
 endif
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources = {}
-let g:deoplete#sources._=['omni', 'buffer', 'member', 'tag', 'ultisnips', 'file']
+"let g:deoplete#sources = {}
+"let g:deoplete#sources._=['omni', 'buffer', 'member', 'tag', 'ultisnips', 'file']
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mileszs/ack.vim'
@@ -46,10 +42,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/cream-capitalization'
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
 "Plugin 'iamcco/markdown-preview.vim'
 Plugin 'chiedo/vim-case-convert'
+Plugin 'Yggdroot/LeaderF'
 "Python-mode {{{
  "let g:pymode_breakpoint_cmd = "__import__('pdb').set_trace()  # XXX BREAKPOINT"
  "let g:pymode_lint_on_write = 0
@@ -157,6 +154,11 @@ colorscheme molokai
 filetype plugin on
 "}}}
 "Mapping ----{{{
+
+" Netrw config
+nnoremap <leader>n :Sexplore<cr>
+let g:netrw_liststyle=1
+
 "Open .vimrc, Source .vimrc, Open .vimrc.bundles.temp
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -288,20 +290,13 @@ nnoremap <C-P> :bprevious<CR>
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
 "}}}
-"nerdtree {{{
-"map <F2> :NERDTreeToggle<cr>
-map <leader>n :NERDTreeToggle<cr>
-" Close NERDTree, if it is the last buffer opened.
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" Set the position
-let g:NERDTreeWinPos = "right"
-"}}}
 "Vimtex {{{
-let g:vimtex_enabled = 0
+let g:vimtex_enabled = 1
 let b:vimtex_main = 'main.tex'
 let g:vimtex_disable_recursive_main_file_detection = 1
 "let g:vimtex_toc_refresh_always = 0
 let g:vimtex_complete_enabled = 0
+let g:vimtex_fold_enabled = 1
 "}}}
 " Snippets Configuration -------{{{
 " Track the engine.
@@ -326,18 +321,58 @@ let g:UltiSnipsEditSplit="vertical"
 " }}}
 "Fugitive{{{
 nnoremap <leader>ga :Git add %:p<cr><cr>
-nnoremap <leader>ga. : Git add .<cr>
-nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>ga. :Git add .<cr>
+nnoremap <leader>gs :Git<cr>
 nnoremap <leader>gh :Git hist<cr>
-nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gl :silent! Glog<cr>:bot copen<cr>
-nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gc :Git commit<cr>
+nnoremap <leader>gl :silent! Gclog<cr>:bot copen<cr>
+nnoremap <leader>gd :Gdiffsplit<cr>
 nnoremap <leader>gb :Git branch<cr>
-nnoremap <leader>gps :Gpush<cr>
+nnoremap <leader>gps :Git push<cr>
 nnoremap <leader>g? :map <leader>g<cr>
 autocmd QuickFixCmdPost *grep* cwindow
 "}}}
+"Syntastic{{{
+"let g:syntastic_python_checkers = ["pylint"]
+"let g:syntastic_python_pylint_exe = 'python3 -m pylint'
+"let g:syntastic_python_python_exec = 'python3'
+
+""let g:syntastic_python_checkers = ['python']
+"}}}
 "Languagetool{{{
 let g:languagetool_jar='$HOME/Documents/project/LanguageTool-3.7/languagetool-commandline.jar'
+"}}}
+"LeaderF{{{
+" don't show the help in normal mode
+let g:Lf_HideHelp = 1
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+
+let g:Lf_ShortcutF = "<leader>ff"
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+
+noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+" search visually selected text literally
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+noremap go :<C-U>Leaderf! rg --recall<CR>
+
+" should use `Leaderf gtags --update` first
+let g:Lf_GtagsAutoGenerate = 1
+let g:Lf_Gtagslabel = 'native-pygments'
+noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 "}}}
 " vim:foldmethod=marker:foldlevel=0
