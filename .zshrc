@@ -109,7 +109,6 @@ alias rm="rm -i"
 alias cp='cp -i'
 alias mv='mv -i'
 
-alias cd="echo 'Disable cd. Force use z to replace cd.'"
 
 stty -ixon
 
@@ -120,8 +119,4 @@ if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
 fi
 
-mkcd () {
-  mkdir "$1"
-  cd "$1"
-}
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
